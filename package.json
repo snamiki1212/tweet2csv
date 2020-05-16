@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "ts-node ./index.ts"
+    "convert": "ts-node ./src/convertIntoCSV.ts",
+    "convert:json": "ts-node ./src/convertIntoJSON.ts"
   },
   "name": "tweet2csv",
   "version": "1.0.0",

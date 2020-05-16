@@ -31,6 +31,9 @@ cp config.ts.example config.ts
 ## Usage:
 
 ```zsh
-yarn build
+yarn convert
 # >> output.csv
+
+yarn convert:json
+# >> output.json
 ```
