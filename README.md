@@ -15,12 +15,9 @@ ls backup/data/tweet.js
 vim backup/data/tweet.js
 
 # 1行目を下記のように変更
-# 前: window.YTD.tweet.part0 = [ {
-# 後: module.exports = [{
+### 前: window.YTD.tweet.part0 = [ {
+### 後: module.exports = [{
 
-
-
+# config.tsを作成して、必要に応じて値を変更
+cp config.ts.example config.ts
 ```
-
-```
-

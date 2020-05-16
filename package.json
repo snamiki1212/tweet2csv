@@ -9,9 +9,7 @@
   "license": "MIT",
   "devDependencies": {
     "json2csv": "^5.0.1",
-    "ts-node": "^8.10.1"
-  },
-  "dependencies": {
+    "ts-node": "^8.10.1",
     "@types/json2csv": "^5.0.1",
     "@types/node": "^14.0.1",
     "typescript": "^3.9.2"
