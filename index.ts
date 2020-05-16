@@ -47,6 +47,7 @@ const fields = [
   "hasAtMark",
   "hasHTTP",
   "isExcludedID",
+  "SHOULD_VIEW"
 ];
 const options = { fields };
 
