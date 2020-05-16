@@ -2,7 +2,6 @@ import { Parser } from "json2csv";
 import { writeFile } from "fs";
 import { config } from "../config";
 
-
 const outputFile = "./output";
 const excludingIDs = config.excludingIDs;
 const squash = (list: any[]) => list.map((obj) => obj.tweet);
@@ -25,9 +24,10 @@ const addCustomFields = (list: any[]) =>
     });
   });
 
-const getFields = (obj: any) => Object.keys(obj)
+const getFields = (obj: any) => Object.keys(obj);
+const jsonrize = (list: any[]) => list.reduce((prev, curr) => ({...prev, [curr.id]: curr}), {})
 
-export const main = (operate: 'csv' | 'json', tweets: any[]) => {
+export const main = (operate: "csv" | "json", tweets: any[]) => {
   try {
     // shape before CSVrize
     const squashed = squash(tweets);
@@ -35,16 +35,15 @@ export const main = (operate: 'csv' | 'json', tweets: any[]) => {
 
     // build csv from json
     let buildObject;
-    if(operate === 'csv'){
-      const fields = getFields(data[0])
+    if (operate === "csv") {
+      const fields = getFields(data[0]);
       const parser = new Parser({ fields });
       buildObject = parser.parse(data);
-    }
-    else if(operate === 'json'){
-      buildObject = JSON.stringify(data)
-    }
-    else{
-      throw new Error('invalid operate param.')
+    } else if (operate === "json") {
+      const json = jsonrize(data)
+      buildObject = JSON.stringify(json);
+    } else {
+      throw new Error("invalid operate param.");
     }
 
     // write
@@ -55,4 +54,3 @@ export const main = (operate: 'csv' | 'json', tweets: any[]) => {
     console.error(e);
   }
 };
-
