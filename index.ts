@@ -1,7 +1,7 @@
 const tweets = require("./backup/data/tweet");
 const { Parser } = require("json2csv");
 import { writeFile } from "fs";
-import config from 'config'
+import {config} from './config'
 
 const outputPath = "./output.csv";
 const excludingIDs = config.excludingIDs

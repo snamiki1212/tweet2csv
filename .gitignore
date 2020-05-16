@@ -6,4 +6,4 @@ backup
 # output
 output*
 
-config.json
+config.ts
