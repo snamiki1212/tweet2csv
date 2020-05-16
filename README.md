@@ -32,4 +32,5 @@ cp config.ts.example config.ts
 
 ```zsh
 yarn build
+# >> output.csv
 ```
