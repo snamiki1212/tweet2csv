@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "ts-node index.ts"
+    "build": "ts-node ./index.ts"
   },
   "name": "tweet2csv",
   "version": "1.0.0",
@@ -12,6 +12,7 @@
     "ts-node": "^8.10.1"
   },
   "dependencies": {
-    "@types/json2csv": "^5.0.1"
+    "@types/json2csv": "^5.0.1",
+    "typescript": "^3.9.2"
   }
 }
