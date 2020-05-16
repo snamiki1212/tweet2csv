@@ -53,15 +53,15 @@ const options = { fields };
 
 const main = (tweets: any[]) => {
   try {
-    // 事前にデータ整形
+    // shape before CSVrize
     const squashed = squash(tweets);
     const data = addCustomFields(squashed);
 
-    // csv化
+    // build csv from json
     const parser = new Parser(options);
     const csv = parser.parse(data);
 
-    // 書き込み
+    // write
     writeFile(outputPath, csv, (err: any) => {
       if (err) throw err;
     });
