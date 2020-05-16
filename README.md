@@ -1,10 +1,13 @@
 README
 
-## Usage:
+## Installation:
 
 ```zsh
 yarn
+# or
+npm i
 
+# link
 ln -s <twitter-backup-dir> backup
 # e.g) ❯ ln -s "/Users/me/Downloads/twitter-2020-04-22-46dd618469d707bebf53bcb34e33dc54fb08725379ad34506affa7e769b8497b (1)" backup
 
@@ -20,4 +23,10 @@ vim backup/data/tweet.js
 
 # config.tsを作成して、必要に応じて値を変更
 cp config.ts.example config.ts
+```
+
+## Usage:
+
+```zsh
+yarn build
 ```
