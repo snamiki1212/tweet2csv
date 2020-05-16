@@ -26,30 +26,7 @@ const addCustomFields = (list: any[]) =>
     });
   });
 
-// TODO: 動的に取りたい
-const fields = [
-  "retweeted",
-  "source",
-  "entities",
-  "display_text_range",
-  "favorite_count",
-  "id_str",
-  "truncated",
-  "retweet_count",
-  "id",
-  "created_at",
-  "favorited",
-  "full_text",
-  "lang",
-  // custom fields
-  "created_at_unixtime",
-  "isMoreThan139",
-  "hasAtMark",
-  "hasHTTP",
-  "isExcludedID",
-  "SHOULD_VIEW"
-];
-const options = { fields };
+const getFields = (obj: any) => Object.keys(obj)
 
 const main = (tweets: any[]) => {
   try {
@@ -58,7 +35,8 @@ const main = (tweets: any[]) => {
     const data = addCustomFields(squashed);
 
     // build csv from json
-    const parser = new Parser(options);
+    const fields = getFields(data[0])
+    const parser = new Parser({ fields });
     const csv = parser.parse(data);
 
     // write
