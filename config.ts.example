@@ -1,3 +1,8 @@
 export const config = {
+  // Requires:
+  outputPath: "dist/",
+  inputPath: "backup/data/tweets",
+
+  // Options
   excludingIDs: [1234567],
 };
