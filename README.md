@@ -2,14 +2,12 @@
 
 ## Prerequirements
 
-save twitter backup data, to read this 👉 https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive
+Save Twitter backup from here:👉 https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive
 
 ## Installation:
 
 ```zsh
-yarn
-# or
-npm i
+pnpm i
 
 # link
 ln -s <twitter-backup-dir> backup
@@ -31,9 +29,6 @@ cp config.ts.example config.ts
 ## Usage:
 
 ```zsh
-yarn convert
-# >> output.csv
-
-yarn convert:json
-# >> output.json
+pnpm convert
+open dist
 ```
