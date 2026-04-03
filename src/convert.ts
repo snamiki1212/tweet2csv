@@ -38,7 +38,7 @@ const getFields = (obj: any) => Object.keys(obj);
 const jsonrize = (list: any[]) => list.reduce((prev, curr) => ({ ...prev, [curr.id]: curr }), {})
 
 // Main
-export const main = () => {
+export const convert = () => {
   try {
 
     // shape before CSVrize
@@ -48,28 +48,27 @@ export const main = () => {
     // pre
     mkdirSync(outputDir, { recursive: true });
 
-    // build csv from json
-    let buildObject;
 
+    // build csv
     (() => {
-      // const operate = "csv"
       const fields = getFields(data[0]);
       const parser = new Parser({ fields });
-      buildObject = parser.parse(data);
+      const buildObject = parser.parse(data);
+
+      // write
       const path = outputFullPath("output.csv")
       writeFile(path, buildObject, (err: any) => {
         if (err) throw err;
       });
     })();
 
-
-
+    // build json
     (() => {
-      // const operate = "json"
       const json = jsonrize(data)
-      buildObject = JSON.stringify(json);
-      const path = outputFullPath("output.json")
+      const buildObject = JSON.stringify(json);
 
+      // write
+      const path = outputFullPath("output.json")
       writeFile(path, buildObject, (err: any) => {
         if (err) throw err;
       });

@@ -1,3 +1,3 @@
-import { main } from "./convert"
+import { convert } from "./convert"
 
-main()
+convert()
