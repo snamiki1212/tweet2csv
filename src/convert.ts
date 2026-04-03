@@ -1,9 +1,19 @@
 import { Parser } from "json2csv";
-import { writeFile } from "fs";
+import { writeFile, mkdirSync } from "fs";
 import { config } from "../config";
 
-const outputFile = "./output";
+// Const
+const outputPath = config.outputPath;
+const outputFolder = (new Date()).toISOString().replace(/:/g, "").substring(0, 17);
+const outputDir = `${outputPath}/${outputFolder}`;
+const outputFullPath = (file: string) => { return `${outputDir}/${file}` }
 const excludingIDs = config.excludingIDs;
+const inputPath = config.inputPath
+
+// Input Data
+const tweets = require(`../${inputPath}`);
+
+// Helpers
 const squash = (list: any[]) => list.map((obj) => obj.tweet);
 const addCustomFields = (list: any[]) =>
   list.map((it: any) => {
@@ -25,31 +35,46 @@ const addCustomFields = (list: any[]) =>
   });
 
 const getFields = (obj: any) => Object.keys(obj);
-const jsonrize = (list: any[]) => list.reduce((prev, curr) => ({...prev, [curr.id]: curr}), {})
+const jsonrize = (list: any[]) => list.reduce((prev, curr) => ({ ...prev, [curr.id]: curr }), {})
 
-export const main = (operate: "csv" | "json", tweets: any[]) => {
+// Main
+export const main = () => {
   try {
+
     // shape before CSVrize
     const squashed = squash(tweets);
     const data = addCustomFields(squashed);
 
+    // pre
+    mkdirSync(outputDir, { recursive: true });
+
     // build csv from json
     let buildObject;
-    if (operate === "csv") {
+
+    (() => {
+      // const operate = "csv"
       const fields = getFields(data[0]);
       const parser = new Parser({ fields });
       buildObject = parser.parse(data);
-    } else if (operate === "json") {
+      const path = outputFullPath("output.csv")
+      writeFile(path, buildObject, (err: any) => {
+        if (err) throw err;
+      });
+    })();
+
+
+
+    (() => {
+      // const operate = "json"
       const json = jsonrize(data)
       buildObject = JSON.stringify(json);
-    } else {
-      throw new Error("invalid operate param.");
-    }
+      const path = outputFullPath("output.json")
 
-    // write
-    writeFile(`${outputFile}.${operate}`, buildObject, (err: any) => {
-      if (err) throw err;
-    });
+      writeFile(path, buildObject, (err: any) => {
+        if (err) throw err;
+      });
+    })();
+
   } catch (e) {
     console.error(e);
   }
