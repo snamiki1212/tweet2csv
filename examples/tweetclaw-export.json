@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "tweetId": "1777777777777777777",
+      "text": "Launching the new importer with a reviewed TweetClaw export.",
+      "createdAt": "2026-06-17T20:45:00.000Z",
+      "author": {
+        "username": "xquik"
+      },
+      "metrics": {
+        "like_count": 12,
+        "retweet_count": 3,
+        "reply_count": 2,
+        "quote_count": 1
+      },
+      "url": "https://x.com/xquik/status/1777777777777777777"
+    }
+  ]
+}
