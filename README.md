@@ -26,6 +26,18 @@ vim backup/data/tweet.js
 cp config.ts.example config.ts
 ```
 
+To convert a reviewed TweetClaw JSON export instead of a Twitter archive file,
+set the config like this:
+
+```ts
+export const config = {
+  outputPath: "dist/",
+  inputPath: "examples/tweetclaw-export.json",
+  inputSource: "tweetClaw",
+  excludingIDs: [],
+};
+```
+
 ## Usage:
 
 ```zsh

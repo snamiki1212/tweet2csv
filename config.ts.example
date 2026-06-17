@@ -2,6 +2,7 @@ export const config = {
   // Requires:
   outputPath: "dist/",
   inputPath: "backup/data/tweets",
+  inputSource: "twitterArchive",
 
   // Options
   excludingIDs: [1234567],
